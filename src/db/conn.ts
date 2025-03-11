@@ -1,23 +1,26 @@
 import "dotenv/config";
 
-const dbHost = process.env.PGHOST!;
-const dbName = process.env.PGDATABASE!;
-const dbUser = process.env.PGUSER!;
-const dbPassword = process.env.PGPASSWORD!;
+const POSTGRES_HOST = process.env.POSTGRES_HOST!;
+const POSTGRES_DB = process.env.POSTGRES_DB!;
+const POSTGRES_USER = process.env.POSTGRES_USER!;
+const POSTGRES_PASSWORD = process.env.POSTGRES_PASSWORD!;
 
 
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
-    host: dbHost,
+const sequelize = new Sequelize(POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD, {
+    host: POSTGRES_HOST,
     dialect: "postgres",
     ssl: true,
+    /*
     dialectOptions: {
         ssl: {
             require: true,
             rejectUnauthorized: false, // Para resolver erros de certificado SSL
         }
     },
+
+     */
 });
 
 // Sincronizar os modelos
