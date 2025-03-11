@@ -4,6 +4,8 @@ import express, { Application } from "express";
 import { handleError } from "./errors";
 import sequelize from "./db/conn";
 import cors from "cors";
+import clientRoutes from "./routes/clientRoutes";
+import loginRoutes from "./routes/loginRoutes";
 
 const app: Application = express();
 const port = 8000;
@@ -18,7 +20,8 @@ app.use(express.json());
 app.use(cors());
 
 // Rotas
-
+app.use("/api/login", loginRoutes)
+app.use("/api/client", clientRoutes);
 
 // Errors
 app.use(handleError);
