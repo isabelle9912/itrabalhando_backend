@@ -7,6 +7,7 @@ import cors from "cors";
 import clientRoutes from "./routes/clientRoutes";
 import loginRoutes from "./routes/loginRoutes";
 import freelancerRoutes from "./routes/freelancerRoutes";
+import projectRoutes from "./routes/projectRoutes";
 
 const app: Application = express();
 const port = 8000;
@@ -24,6 +25,7 @@ app.use(cors());
 app.use("/api/login", loginRoutes)
 app.use("/api/client", clientRoutes);
 app.use("/api/freelancer", freelancerRoutes);
+app.use("/api/project", projectRoutes);
 
 // Errors
 app.use(handleError);
