@@ -6,7 +6,7 @@ const freelancerSchema = z.object({
     email: z.string().email('E-mail inválido'),
     skills: z.array(z.string()).nonempty('Selecione pelo menos uma habilidade'),
     bio: z.string().min(10, 'A bio deve ter pelo menos 10 caracteres'),
-    image: z.string().optional(),
+    image: z.string().nullable().optional(),
     password: z
         .string()
         .min(6, "Senha deve ter no mínimo 6 caracteres")
