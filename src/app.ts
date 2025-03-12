@@ -8,6 +8,7 @@ import clientRoutes from "./routes/clientRoutes";
 import loginRoutes from "./routes/loginRoutes";
 import freelancerRoutes from "./routes/freelancerRoutes";
 import projectRoutes from "./routes/projectRoutes";
+import proposalRoutes from "./routes/proposalRoutes";
 
 const app: Application = express();
 const port = 8000;
@@ -26,6 +27,7 @@ app.use("/api/login", loginRoutes)
 app.use("/api/client", clientRoutes);
 app.use("/api/freelancer", freelancerRoutes);
 app.use("/api/project", projectRoutes);
+app.use("/api/proposal", proposalRoutes);
 
 // Errors
 app.use(handleError);
