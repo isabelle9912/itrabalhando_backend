@@ -26,7 +26,7 @@ const freelancerRoutes = Router();
  */
 freelancerRoutes.get(
     "/",
-    ensureTokenIsValidMiddleware,
+    //ensureTokenIsValidMiddleware,
     getAllFreelancerIdController
 );
 
@@ -41,7 +41,7 @@ freelancerRoutes.get(
 freelancerRoutes.get(
     "/:id",
     ensureExistsMiddleware(Freelancer, "Freelancer"),
-    ensureTokenIsValidMiddleware,
+    //ensureTokenIsValidMiddleware,
     getFreelancerIdController
 );
 
