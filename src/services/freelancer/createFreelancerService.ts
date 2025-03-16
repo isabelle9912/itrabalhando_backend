@@ -4,6 +4,8 @@ import {
 } from "../../interfaces/freelancer.interface";
 import Freelancer from "../../models/Freelancer";
 import { freelancerWithoutPassSchema } from "../../schemas/freelancer.schema";
+import {checkEmailExists} from "../../utils/checkEmailExists";
+import {AppError} from "../../errors";
 
 /**
  * Serviço para criar um novo freelancer.
@@ -20,6 +22,9 @@ import { freelancerWithoutPassSchema } from "../../schemas/freelancer.schema";
 export const createFreelancerService = async (
     payload: iFreelancerCreate
 ): Promise<iFreelancerWithoutPass> => {
+    if(await checkEmailExists(payload.email)) {
+        throw new AppError("Email already exists!");
+    }
     const createdFreelancer = await Freelancer.create(payload);
 
     const freelancerWithoutPass = freelancerWithoutPassSchema.parse(createdFreelancer);
